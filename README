@@ -1,0 +1,4 @@
+First attempt at a testing template.
+Uses Vows
+Run the following command:
+	runTests
