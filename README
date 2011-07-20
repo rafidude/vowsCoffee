@@ -1,4 +1,6 @@
 First attempt at a testing template.
 Uses Vows
-Run the following command:
-	runTests
+Run the following command to see broken tests if any:
+	zsh runTests
+Run the following command to see all specs of all tests:
+	zsh runTests spec

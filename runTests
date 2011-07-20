@@ -3,10 +3,11 @@ coffee -o test -c srctest
 
 broken=`vows | grep broken`
 if [[ $broken = *broken* ]]; then
-  echo "tests failed: " $broken
+  echo "The following tests failed:"
   vows
 else
-  echo success
+  # echo success
+  # push to github only when all tests pass
 fi
 
 if [[ $1 = *spec* ]]; then
