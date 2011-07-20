@@ -1,0 +1,20 @@
+#!/bin/ksh
+if [[ -z "$1" ]]; then
+  echo "Please provide commit message..."
+else
+  broken=`zsh runTests`
+  if [[ $broken = *broken* ]]; then
+    echo "Cannot push to github. The following tests failed:"
+    vows
+    exit 2
+  else
+    # push to github only when all tests pass
+    git add .
+    echo "git status before deploy"
+    git status
+    git commit -m $1
+    git push
+    echo "git status after deploy"
+    git status
+  fi
+fi

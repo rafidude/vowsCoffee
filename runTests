@@ -1,15 +1,18 @@
+#!/bin/ksh
 coffee -o lib -c src
-coffee -o test -c srctest
+coffee -o test -c srcTest
 
 broken=`vows | grep broken`
+if [[ $1 = *spec* ]]; then
+  vows --spec
+fi
+
 if [[ $broken = *broken* ]]; then
   echo "The following tests failed:"
   vows
+  exit 2
 else
+  exit 0
   # echo success
   # push to github only when all tests pass
-fi
-
-if [[ $1 = *spec* ]]; then
-  vows --spec
 fi
